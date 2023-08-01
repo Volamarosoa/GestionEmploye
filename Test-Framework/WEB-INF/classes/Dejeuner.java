@@ -11,7 +11,7 @@ import etu2068.annotations.restAPI;
 import etu2068.annotations.Auth;
 import etu2068.annotations.Test;  
 // import etu2068.annotations.ToXml;
-// import etu2068.annotations.ExportXML;
+import etu2068.annotations.ExportXML;
 import etu2068.fileUpload.FileUpload;
 
 
@@ -178,12 +178,12 @@ public class Dejeuner extends GeneriqueDAO{
         return view;
     }
 
-
+    @ExportXML
     @Url(name = "/telechargerxml")
     public String exportXML() throws Exception {
         Element racine = new Element("platXML");
         Document document = new Document(racine);
-        String nom = "fichier.xml";
+        String nom = "webapps/Gestion_emp/fichier.xml";
         
         // Écrire le document XML dans un fichier
         try {
@@ -201,7 +201,7 @@ public class Dejeuner extends GeneriqueDAO{
             
             
             XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
-            FileWriter writer = new FileWriter("../../fichier.xml");
+            FileWriter writer = new FileWriter(nom);
             outputter.output(document, writer);
             writer.close();
             System.out.println("Le fichier XML a été créé avec succès.");

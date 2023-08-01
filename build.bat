@@ -7,7 +7,7 @@ mv fw.jar Test-Framework/WEB-INF/lib
 ls Test-Framework/WEB-INF/lib
 jar tf Test-Framework/WEB-INF/lib/fw.jar
 cd Test-Framework/WEB-INF/classes
-javac -d . *java
+javac -cp ../lib/* -d . *java
 cd ../../..
 cd Test-Framework
 jar cf Gestion_emp.war .
